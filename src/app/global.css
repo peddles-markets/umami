@@ -1,26 +1,59 @@
 :root {
-  --zen-font-family: var(--font-inter), sans-serif;
+  /* Manrope carries sentences, as in the app. Poppins and IBM Plex Mono are available to any
+   * rule that wants display or figures; Plex is bound to <code>/<pre> below so numeric columns
+   * line up instead of drifting, which is the whole reason the product uses it. */
+  --zen-font-family: var(--font-manrope), sans-serif;
+  --peddles-font-display: var(--font-poppins), var(--font-manrope), sans-serif;
+  --peddles-font-mono: var(--font-plex-mono), ui-monospace, monospace;
 }
 
-/* ── Peddles brand accent ────────────────────────────────────────────────────
- * Taken from the app's own token set (apps/web/src/styles/tokens.css), so this
- * dashboard and the product agree on what "Peddles blue" is.
+code,
+pre,
+kbd,
+samp {
+  font-family: var(--peddles-font-mono);
+  font-variant-numeric: tabular-nums;
+}
+
+/* ── Peddles palette, bound onto Zen's tokens ───────────────────────────────
+ * Every value is copied from the product's own token set
+ * (apps/web/src/styles/tokens.css) so this dashboard and the app cannot drift
+ * apart on what "Peddles" looks like.
  *
- * Per THEME rather than one pinned value: #115abf carries enough weight on the
- * light surface, and would be muddy on the dark one, where #3b94ff is the
- * token the product itself uses. The foreground stays near-white because both
- * accents are dark enough to carry white text.
+ * Bound per THEME rather than pinned once: the accent that carries on the light
+ * surface (#115abf) goes muddy on the dark one, where the product itself uses
+ * #3b94ff. Same for the surfaces — a single set cannot serve both.
+ *
+ * Zen exposes surface / surface-raised / surface-sunken as three depths. They
+ * map onto the product's bg and surface steps, with `sunken` as the page and
+ * `raised` as the card, which is how the app stacks them.
  */
 :root,
 [data-theme="light"] {
   --zen-primary: #115abf;
   --zen-primary-fg: #ffffff;
+  --zen-surface-sunken: #f4f7fc;
+  --zen-surface: #ffffff;
+  --zen-surface-raised: #ffffff;
+  --zen-fg: #0a1220;
+  --zen-fg-muted: #3d4b63;
+  --zen-border: #d3deef;
+  --zen-status-success: #0c6c3c;
+  --zen-status-error: #ac3027;
 }
 
 [data-theme="dark"],
 .dark {
   --zen-primary: #3b94ff;
   --zen-primary-fg: #04060c;
+  --zen-surface-sunken: #04060c;
+  --zen-surface: #070c17;
+  --zen-surface-raised: #070c17;
+  --zen-fg: #e4ecf9;
+  --zen-fg-muted: #8b9cb7;
+  --zen-border: #16223a;
+  --zen-status-success: #3fd98a;
+  --zen-status-error: #ff6b61;
 }
 
 /* Zen's rem-based typography and spacing assume the browser's default root size. */

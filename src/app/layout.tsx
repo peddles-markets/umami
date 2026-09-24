@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
+import { IBM_Plex_Mono, Manrope, Poppins } from 'next/font/google';
 import { headers } from 'next/headers';
 import { Suspense } from 'react';
 import { getBaseUrl } from '@/lib/get-base-url';
@@ -7,10 +7,28 @@ import { Providers } from './Providers';
 import '@umami/react-zen/styles.full.css';
 import './global.css';
 
-const inter = Inter({
+/**
+ * The product's three faces, same roles as in the app: Manrope for sentences, Poppins for display,
+ * IBM Plex Mono for every figure, so numbers line up in a column instead of drifting.
+ */
+const manrope = Manrope({
   subsets: ['latin'],
   display: 'swap',
-  variable: '--font-inter',
+  variable: '--font-manrope',
+});
+
+const poppins = Poppins({
+  subsets: ['latin'],
+  weight: ['500', '600', '700'],
+  display: 'swap',
+  variable: '--font-poppins',
+});
+
+const plexMono = IBM_Plex_Mono({
+  subsets: ['latin'],
+  weight: ['400', '500', '600'],
+  display: 'swap',
+  variable: '--font-plex-mono',
 });
 
 export default function ({ children }) {
@@ -23,7 +41,10 @@ export default function ({ children }) {
   }
 
   return (
-    <html lang="en" className={`${inter.className} ${inter.variable}`}>
+    <html
+      lang="en"
+      className={`${manrope.className} ${manrope.variable} ${poppins.variable} ${plexMono.variable}`}
+    >
       <head>
         <link rel="icon" href="/favicon.ico" />
         <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />

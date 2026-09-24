@@ -25,6 +25,7 @@ import {
   PanelsLeftBottom,
 } from '@/components/icons';
 import { UserButton } from '@/components/input/UserButton';
+import { ThemeToggleButton } from '@/components/input/ThemeToggleButton';
 import { Logo } from '@/components/svg';
 
 export function SideNav(props: any) {
@@ -99,7 +100,7 @@ export function SideNav(props: any) {
         >
           {!isCollapsed && (
             <IconLabel icon={<Logo />}>
-              <Text weight="bold">umami</Text>
+              <Text weight="bold">Peddles</Text>
             </IconLabel>
           )}
           <PanelButton />
@@ -156,10 +157,14 @@ export function SideNav(props: any) {
       <Row
         paddingTop="2"
         width="100%"
-        justifyContent={isCollapsed ? 'center' : undefined}
+        alignItems="center"
+        justifyContent={isCollapsed ? 'center' : 'space-between'}
         style={{ flexShrink: 0 }}
       >
         <UserButton showText={!isCollapsed} />
+        {/* Light/dark belongs one click away, as it is in the product. Umami ships it three
+            levels deep under Settings > Preferences, which is where people stop looking. */}
+        {!isCollapsed && <ThemeToggleButton />}
       </Row>
     </Column>
   );
