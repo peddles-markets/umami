@@ -2,13 +2,25 @@
   --zen-font-family: var(--font-inter), sans-serif;
 }
 
-/* Preserve the brand accent when Zen applies its light or dark theme tokens. */
+/* ── Peddles brand accent ────────────────────────────────────────────────────
+ * Taken from the app's own token set (apps/web/src/styles/tokens.css), so this
+ * dashboard and the product agree on what "Peddles blue" is.
+ *
+ * Per THEME rather than one pinned value: #115abf carries enough weight on the
+ * light surface, and would be muddy on the dark one, where #3b94ff is the
+ * token the product itself uses. The foreground stays near-white because both
+ * accents are dark enough to carry white text.
+ */
 :root,
-[data-theme="light"],
+[data-theme="light"] {
+  --zen-primary: #115abf;
+  --zen-primary-fg: #ffffff;
+}
+
 [data-theme="dark"],
 .dark {
-  --zen-primary: oklch(62.3% 0.214 259.815);
-  --zen-primary-fg: oklch(98.5% 0 0);
+  --zen-primary: #3b94ff;
+  --zen-primary-fg: #04060c;
 }
 
 /* Zen's rem-based typography and spacing assume the browser's default root size. */

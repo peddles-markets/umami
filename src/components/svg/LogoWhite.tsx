@@ -1,26 +1,18 @@
 import type { SVGProps } from 'react';
 
+/** The Peddles mark for dark surfaces, where `currentColor` is not white. */
 const SvgLogoWhite = (props: SVGProps<SVGSVGElement>) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width={20}
     height={20}
-    viewBox="0 0 428 389.11"
+    viewBox="0 0 100 100"
+    fill="none"
     {...props}
   >
-    <circle
-      cx={214.15}
-      cy={181}
-      r={171}
-      fill="none"
-      stroke="#fff"
-      strokeMiterlimit={10}
-      strokeWidth={20}
-    />
-    <path
-      fill="#fff"
-      d="M413 134.11H15.29a15 15 0 0 0-15 15v15.3C.12 168 0 171.52 0 175.11c0 118.19 95.81 214 214 214 116.4 0 211.1-92.94 213.93-208.67 0-.44.07-.88.07-1.33v-30a15 15 0 0 0-15-15"
-    />
+    <rect x={24} y={30} width={19} height={46} rx={5.5} fill="#2b8bff" />
+    <rect x={57} y={20} width={19} height={36} rx={5.5} fill="#F3F0E8" />
+    <rect x={42} y={46} width={16} height={5.5} rx={2.75} fill="#2b8bff" />
   </svg>
 );
 export default SvgLogoWhite;
